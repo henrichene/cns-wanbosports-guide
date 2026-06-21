@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万博体育 · 运动与陪伴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d2 0%, #f7d9b8 50%, #f8cd9e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #2c211b;
+        }
+        .wrapper {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255, 252, 248, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 36px 36px 24px 24px;
+            box-shadow: 0 18px 40px -10px rgba(140, 80, 30, 0.25), 0 6px 12px rgba(0,0,0,0.03);
+            padding: 2.8rem 2.2rem;
+            transition: box-shadow 0.25s;
+        }
+        .card:hover {
+            box-shadow: 0 22px 48px -8px rgba(120, 60, 20, 0.30);
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #6e3f1c;
+            margin-bottom: 0.4rem;
+            border-left: 6px solid #c9824a;
+            padding-left: 1.2rem;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #7b5c44;
+            margin-bottom: 2rem;
+            padding-left: 1.8rem;
+            font-weight: 350;
+            border-bottom: 1px dashed #dbb38c;
+            padding-bottom: 0.6rem;
+        }
+        .intro {
+            font-size: 1.02rem;
+            background: #fffcf5;
+            padding: 1.4rem 1.6rem;
+            border-radius: 28px;
+            margin-bottom: 2.2rem;
+            box-shadow: inset 0 1px 5px rgba(200, 130, 60, 0.08);
+        }
+        .intro p {
+            margin-bottom: 1rem;
+        }
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 2.2rem 0;
+        }
+        .highlight-item {
+            background: #f6ede4;
+            border-radius: 28px;
+            padding: 1.3rem 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(130, 70, 30, 0.04);
+            transition: all 0.15s;
+        }
+        .highlight-item:hover {
+            background: #f0e2d4;
+            transform: translateY(-3px);
+        }
+        .highlight-item .emoji-big {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #5c3f2b;
+            margin-bottom: 0.15rem;
+        }
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: #5f4a39;
+        }
+        .usage-section {
+            background: #f7efe6;
+            border-radius: 28px;
+            padding: 1.6rem 1.8rem;
+            margin: 1.8rem 0 2rem 0;
+        }
+        .usage-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #6e3f1c;
+            margin-bottom: 0.8rem;
+        }
+        .usage-list {
+            list-style: none;
+            padding: 0;
+        }
+        .usage-list li {
+            padding: 0.6rem 0 0.6rem 2.2rem;
+            position: relative;
+            border-bottom: 1px solid #e5d5c4;
+        }
+        .usage-list li:last-child {
+            border-bottom: none;
+        }
+        .usage-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0.2rem;
+            color: #b47b56;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .faq-mini {
+            background: #f8f1ea;
+            border-radius: 24px;
+            padding: 1.4rem 1.6rem;
+            margin-top: 2.2rem;
+        }
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dotted #dac1ae;
+            padding-bottom: 0.4rem;
+        }
+        .faq-mini details:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            color: #4e3a2b;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            font-size: 0.98rem;
+        }
+        .faq-mini summary:hover {
+            color: #9b6f4b;
+        }
+        .faq-mini p {
+            margin-top: 0.3rem;
+            padding-left: 0.8rem;
+            color: #544438;
+            font-size: 0.93rem;
+        }
+        .link-sentence {
+            background: #f5e7db;
+            border-radius: 60px;
+            padding: 0.9rem 1.6rem;
+            display: inline-block;
+            margin: 1rem 0 0.6rem 0;
+            font-size: 1rem;
+        }
+        .link-sentence a {
+            color: #914f21;
+            background: #ffffffd9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid #dbaa7c;
+            transition: all 0.15s;
+            display: inline-block;
+            line-height: 1.4;
+        }
+        .link-sentence a:hover {
+            background: #fff1e0;
+            border-color: #b47a4c;
+            color: #6d3b14;
+            box-shadow: 0 2px 6px rgba(150, 80, 20, 0.2);
+        }
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #7a624d;
+            text-align: center;
+            border-top: 1px solid #e3cfbb;
+            padding-top: 1.2rem;
+        }
+        .footer-note span {
+            opacity: 0.7;
+        }
+        @media (max-width: 550px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 2rem;
+                padding-left: 0.8rem;
+            }
+            .subhead {
+                padding-left: 1rem;
+                font-size: 0.95rem;
+            }
+            .highlight-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .usage-section {
+                padding: 1rem 1.2rem;
+            }
+            .link-sentence {
+                font-size: 0.9rem;
+                padding: 0.7rem 1rem;
+            }
+        }
+        @media (max-width: 380px) {
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="card">
+        <h1>万博体育</h1>
+        <div class="subhead">运动场边的温度 · 每一次参与都值得被记录</div>
+
+        <div class="intro">
+            <p>体育从来不只是胜负的博弈，它是日常里的一股韧性，是喘息时的一抹光亮。万博体育希望成为一个安静而可靠的陪伴者，在赛事、健身、户外与社群之间搭起一座朴素的桥。不喧哗，不煽动，只是让热爱运动的人能更方便地找到属于自己的节奏。</p>
+            <p>这里没有夸张的承诺，只有对运动本质的尊重——流畅的信息、清晰的赛程、克制的互动，以及一点恰好的鼓励。</p>
+        </div>
+
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <span class="emoji-big">🏃</span>
+                <h3>轻量追踪</h3>
+                <p>关注你喜欢的项目，日程与数据一目了然，不打扰。</p>
+            </div>
+            <div class="highlight-item">
+                <span class="emoji-big">🤝</span>
+                <h3>社区氛围</h3>
+                <p>温和的讨论空间，分享经验与观点，没有戾气。</p>
+            </div>
+            <div class="highlight-item">
+                <span class="emoji-big">📋</span>
+                <h3>精简资讯</h3>
+                <p>赛事摘要与运动知识，去芜存菁，节省你的注意力。</p>
+            </div>
+            <div class="highlight-item">
+                <span class="emoji-big">🧘</span>
+                <h3>动静结合</h3>
+                <p>从竞技到养生，不同强度的内容都能找到位置。</p>
+            </div>
+        </div>
+
+        <div class="usage-section">
+            <h2>可以这样使用</h2>
+            <ul class="usage-list">
+                <li>日常浏览近期体育赛事安排，提前标记感兴趣的时间点，避免错过。</li>
+                <li>在运动后记录简短感受，或浏览同好分享的训练心得、恢复建议。</li>
+                <li>查找基础运动规则、装备常识与安全贴士，适合初学者慢慢探索。</li>
+                <li>保持适度关注，不必时时刷新——好的陪伴是知道它在那里，却不会催促你。</li>
+            </ul>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>万博体育适合什么样的人？</summary>
+                <p>无论你是偶尔跑步的上班族、周末看球的爱好者，还是刚刚开始接触运动的新手，只要你对体育有一份朴素的好奇或坚持，都可以在这里获得一份平实的信息支持。</p>
+            </details>
+            <details>
+                <summary>内容更新频率高吗？</summary>
+                <p>保持适度更新。重点赛事与实用内容会优先呈现，但不会用信息轰炸夺走你的注意力。质量比数量重要。</p>
+            </details>
+            <details>
+                <summary>是否需要注册或付费？</summary>
+                <p>基础浏览与查询功能无需注册即可使用。部分个性化记录或社区互动可能需要简单注册，目前没有付费计划。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            <span>如果你想更深入地了解或使用，可以前往 </span>
+            <a href="https://cns-wanbosports.com">万博体育</a>
+            <span> 看看，那里有更完整的赛事与社区内容。</span>
+        </div>
+
+        <div class="footer-note">
+            <span>运动是一种对话，与自己，也与世界。</span><br>
+            <span style="font-size:0.75rem;">—— 温和 · 真实 · 不盲从</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
